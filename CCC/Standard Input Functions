@@ -1,0 +1,40 @@
+    static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter() throws IOException {
+        return next().charAt(0);
+    }
+    static String readLine() throws IOException {
+        return br.readLine().trim();
+    }
+    static int readLongLineInt() throws IOException{
+        int x = 0, c;
+        while((c = br.read()) != ' ' && c != '\n')
+            x = x * 10 + (c - '0');
+        return x;
+    }
+    static long pow (long x, long exp){
+        if (exp==0) return 1;
+        long t = pow(x, exp/2);
+        t = t*t %mod;
+        if (exp%2 == 0) return t;
+        return t*x%mod;
+    }
+    static long lcm(long a, long b) {
+        return (a / gcd(a, b)) * b;
+    }
+    static long gcd(long a, long b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
