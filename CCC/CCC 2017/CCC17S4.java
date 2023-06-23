@@ -39,7 +39,7 @@ public class CCC17S4 {
 		System.out.println(kruskals(V, graphEdges));
     }
 
-    static class Edge {
+    public static class Edge extends CCC17S4 {
         int src, dest, weight;
 
 		public Edge(int src, int dest, int weight)
@@ -50,7 +50,7 @@ public class CCC17S4 {
 		}
     }
 
-    static class Subset {
+    public static class Subset extends CCC17S4 {
 		int parent, rank;
 
 		public Subset(int parent, int rank)
