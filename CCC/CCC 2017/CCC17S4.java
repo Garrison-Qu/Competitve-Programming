@@ -26,7 +26,7 @@ public class CCC17S4 {
 			} else {
 				C = 0;
 			}
-            graphEdges.add(new Edge(A, B, C));
+            graphEdges.add(new Edge(A - 1, B - 1, C));
         }
 
         graphEdges.sort(new Comparator<Edge>() {
@@ -131,8 +131,7 @@ public class CCC17S4 {
 		if (subsets[i].parent == i)
 			return subsets[i].parent;
 
-		subsets[i].parent
-			= findRoot(subsets, subsets[i].parent);
+		subsets[i].parent = findRoot(subsets, subsets[i].parent);
 		return subsets[i].parent;
 	}
 }

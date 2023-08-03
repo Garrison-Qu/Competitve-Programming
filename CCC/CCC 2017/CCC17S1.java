@@ -4,7 +4,6 @@ import java.io.*;
 public class CCC17S1 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StreamTokenizer st = new StreamTokenizer(br);
-
     
     public static void main (String[] args) throws IOException {
         st.nextToken();

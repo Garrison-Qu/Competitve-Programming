@@ -1,4 +1,5 @@
 import sys
+import math
 
 input = sys.stdin.readline()
 
@@ -8,37 +9,26 @@ l = input.count('L')
 m = input.count('M')
 s = input.count('S')
 
-#while s[0] == 'L':
-#    s.replace('L', '', 1)
-#else: 
-#    if s[0] == 'M':
-#        if s.count('L') > 0:
-#            counter += 1
-#            s.replace('M', '', 1)
-#            s.replace('L', '', 1)
-#        else:
-#            while s[0] == 'M':
-#                s.replace('M', '', 1)
-#            else:
+lm, ls, ml, ms, sl, sm = 0, 0, 0, 0, 0, 0
 
-#while len(s) > 0:
-#    if s[0] == 'L':
-#        s.replace('L', '', 1)
-#    elif s[0] == 'M':
-#        if s.count('L') > 0:
-#            counter += 1
-#            s.replace('L', '', 1)
-#            s.replace('M', '', 1)
-#        else:
-#            s.replace('M', '', 1)
-#    elif s[0] == 'S':
-#        if s.count('L') > 0:
-#           counter += 1
-#            s.replace('S', '', 1)
-#            s.replace('L', '', 1)
-#        if s.count('M') > 0:
-#            counter += 1
-#            s.replace('S', '', 1)
-#            s.replace('M', '', 1)
-    
-sys.stdout.write(counter)
+for i in range (l):
+    if input[i] == 'M':
+        lm += 1
+    if input[i] == 'S':
+        ls += 1
+
+for i in range (m):
+    if input[l+i] == 'L':
+        ml += 1
+    if input[l+i] == 'S':
+        ms += 1
+
+for i in range (s):
+    if input[l+m+i] == 'L':
+        sl += 1
+    if input[l+m+i] == 'M':
+        sm += 1
+
+counter = lm + ls + ml + ms - min(ml, lm)
+
+print(int(counter))

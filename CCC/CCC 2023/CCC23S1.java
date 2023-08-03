@@ -6,33 +6,49 @@ public class CCC23S1 {
         StreamTokenizer st = new StreamTokenizer(br);
 
         st.nextToken();
-        int input = (int) st.nval;
-        int[][] idx = new int[input][2];
-        int res = 0;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < input; j++) {
-                st.nextToken();
-                idx[j][i] = (int) st.nval;
-                if (idx [j] [i] == 1) {
-                    res += 3;
+        int n = (int) st.nval;
+        int[][] idx = new int[2][n + 5];
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            st.nextToken();
+            idx[0][i] = (int) st.nval;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            st.nextToken();
+            idx[1][i] = (int) st.nval;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (idx[0][i] == 1) {
+                count += 3;
+                if (idx[0][i-1] == 1) {
+                    count--;
+                }
+                if (idx[0][i+1] == 1) {
+                    count--;
+                }
+                if (idx[1][i] == 1 && i % 2 == 1) {
+                    count--;
                 }
             }
         }
 
-        for (int j = 0; j < 2; j++) {
-            for (int i = 0; i < input - 1; i++) {
-                if (1 == idx[i] [j] && idx[i][j] == idx[i + 1][j]) {
-                    res -= 2;
+        for (int i = 1; i <= n; i++) {
+            if (idx[1][i] == 1) {
+                count += 3;
+                if (idx[1][i-1] == 1) {
+                    count--;
+                }
+                if (idx[1][i+1] == 1) {
+                    count--;
+                }
+                if (idx[0][i] == 1 && i % 2 == 1) {
+                    count--;
                 }
             }
         }
 
-        for (int i = 0; i < (int) input/2; i++) {
-            if (1 == idx[i*2] [0] && idx [i*2] [0] == idx [i*2] [1]) {
-                res -= 2;
-            }
-        }
-
-        System.out.println(res);
+        System.out.println(count);
     }
 }
